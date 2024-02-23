@@ -3,7 +3,13 @@
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=false" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+      <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+      <link rel="apple-touch-icon" href="icons/192x192.png">
+      <meta http-equiv="Cache-Control" content="no-store" />
+      <link rel="manifest" href="manifest.json">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover" />
+
     <title>oscilline</title>
     <script src="./lib/hydra-synth.js"></script>
     <script src="./lib/p5.min.js"></script>
@@ -86,9 +92,8 @@ function draw() {
 function mousePressed(){
     clear()
 }
-         //gyro.show()
         gyro.requestPermissions(document.getElementById('gyro-button'))
-        gyro.show()
+        // gyro.show()
 
     </script>
 </body>
