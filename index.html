@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=false" />
+    <title>HY5 example</title>
+    <script src="./lib/hydra-synth.js"></script>
+    <script src="./lib/p5.min.js"></script>
+    <script src="./lib/gyro-v2.js"></script>
+    <styLe>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background: black;
+        }
+
+        canvas {
+            display: block;
+        }
+
+        .p5Canvas {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+        }
+        #gyro-button {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          background: none;
+          cursor: pointer;
+          background-size: cover;
+          background-position: center;
+          background-image: url("cover.png");
+          top: 0px;
+          left: 0px;
+          z-index: 200;
+          border: none;
+        }
+    </styLe>
+</head>
+
+<body>
+    <!-- HY5 needs to be applied in body tag -->
+    <script src="./lib/hy5.js"></script>
+     <button id="gyro-button">activate gyroscope</button>
+
+    <script>    
+        // sandbox
+H.pd()
+
+src(s0)
+    .modulateScale(noize(5), ()=>gyro.beta/3)
+    .modulate(noize(1115), ()=>gyro.alpha/3)
+    .modulateScale(osc(155), ()=>gyro.gamma/3)
+    .out()
+
+P5.init()
+
+P5.hide()
+// sandbox
+
+function setup() {
+    createCanvas(windowWidth, windowHeight)
+    angleMode(DEGREES)
+}
+
+function draw() {
+    // background(0, 5)
+    // clear()
+    stroke(255)
+    strokeWeight(2)
+    
+    if(mouseIsPressed){
+        
+    translate(mouseX, mouseY)
+    rotate(sin(frameCount*1)*45)
+    line(-150, 0, 150, 0)
+    }
+}
+
+function mousePressed(){
+    clear()
+}
+         //gyro.show()
+        gyro.requestPermissions(document.getElementById('gyro-button'))
+        gyro.show()
+
+    </script>
+</body>
+
+</html>

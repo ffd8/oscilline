@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>hy5 - line drawing_001</title>
+	<meta charset="utf-8">
+	<!-- Compiled w/ P5LIVE, http://github.com/ffd8/p5live -->
+	<style type="text/css">
+		body{
+			margin:0;
+			overflow:hidden;
+		}
+		canvas{
+			position:fixed;
+			top:0;
+			left:0;
+			z-index:-1;
+			width:100vw;
+			height:100vh;
+			margin:0;
+		}
+	</style>
+	<script type="text/javascript">
+		// eco-mode = only render if window focused
+		window.onblur = function () {
+			noLoop();
+		};
+		window.onfocus = function () {
+			loop();
+		};
+	</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.8.0/p5.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/processing/p5.js-sound/lib/p5.sound.min.js"></script>
+<script type="text/javascript" src="https://unpkg.com/hydra-synth"></script>
+<script type="text/javascript" src="includes/libs/hydra-synth.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/ffd8/hy5@main/hy5.js"></script>
+<script type="text/javascript" src="includes/libs/hy5.js"></script>
+</head>
+<body style="background: rgb(0, 0, 0);">
+
+<script type="text/javascript">
+//hy5 - line drawing_001
+
+/* CUSTOM FUNCTIONS FOR P5LIVE */
+// keep fullscreen if window resized
+function windowResized() {
+	resizeCanvas(windowWidth, windowHeight);
+}
+
+// custom ease function
+function ease(iVal, oVal, eVal){
+	return oVal += (iVal - oVal) * eVal;
+}
+
+// processing compatibility
+function println(msg){
+	print(msg);
+}
+
+
+let libs = ['https://unpkg.com/hydra-synth', 'includes/libs/hydra-synth.js', 'https://cdn.jsdelivr.net/gh/ffd8/hy5@main/hy5.js', 'includes/libs/hy5.js']
+
+// sandbox
+H.pd()
+
+src(s0)
+	.modulateScale(noize(5), .51)
+	.modulate(noize(1115), .01)
+	.modulateScale(osc(155), .21)
+	.out()
+
+P5.init()
+
+P5.hide()
+// sandbox
+
+function setup() {
+	createCanvas(windowWidth, windowHeight)
+	angleMode(DEGREES)
+}
+
+function draw() {
+	// background(0, 5)
+	// clear()
+	stroke(255)
+	strokeWeight(2)
+	
+	if(mouseIsPressed){
+		
+	translate(mouseX, mouseY)
+	rotate(sin(frameCount*1)*45)
+	line(-150, 0, 150, 0)
+	}
+}
+
+function mousePressed(){
+	clear()
+}
+</script>
+
+</body>
+</html>
