@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=false" />
-    <title>HY5 example</title>
+    <title>oscilline</title>
     <script src="./lib/hydra-synth.js"></script>
     <script src="./lib/p5.min.js"></script>
     <script src="./lib/gyro-v2.js"></script>
@@ -54,9 +54,9 @@
 H.pd()
 
 src(s0)
-    .modulateScale(noize(5), ()=>gyro.beta/3)
-    .modulate(noize(1115), ()=>gyro.alpha/3)
-    .modulateScale(osc(155), ()=>gyro.gamma/3)
+    .modulateScale(noize(5), ()=>.02+gyro.beta/3)
+    .modulate(noize(1115), ()=>.02+gyro.alpha/3)
+    .modulateScale(osc(155), ()=>.02+gyro.gamma/3)
     .out()
 
 P5.init()
