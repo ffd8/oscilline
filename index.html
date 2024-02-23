@@ -61,7 +61,7 @@ H.pd()
 
 src(s0)
     .modulateScale(noize(5), ()=>.02+gyro.beta/3)
-    .modulate(noize(1115), ()=>.02+gyro.alpha/3)
+    .modulate(noize(gyro.beta*10), .1)
     .modulateScale(osc(155), ()=>.02+gyro.gamma/3)
     .out()
 
